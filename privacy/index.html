@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de Privacidade — Polaco e Coelho Coleções | POLACO E COELHO COLECOES LTDA">
+  <meta name="robots" content="noindex, follow">
+  <title>Política de Privacidade | Polaco e Coelho Coleções</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%23612730'/><text y='.92em' font-size='52' font-family='serif' font-style='italic' font-weight='600' fill='%23d4b886' x='14'>PC</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bordo: #612730;
+      --bordo-dark: #421a21;
+      --bordo-deep: #240e13;
+      --bordo-light: #823843;
+      --sepia: #8b6f47;
+      --sepia-dark: #6a522f;
+      --sepia-light: #b08f5e;
+      --bege: #d4b886;
+      --bege-light: #e4cca5;
+      --bege-bg: #f5e8cb;
+      --paper: #f9f1dc;
+      --paper-2: #ede2c4;
+      --bg: #fbf5e4;
+      --white: #ffffff;
+      --ink: #2a1f15;
+      --ink-soft: #5a4a36;
+      --grey: #8a7860;
+      --line: rgba(97,39,48,0.18);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'EB Garamond', serif;
+      --font-ui: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: var(--bordo); border-radius: 4px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 4vw; height: 80px;
+      background: rgba(251,245,228,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-badge {
+      width: 48px; height: 48px;
+      background: var(--bordo); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 22px; color: var(--bege); font-weight: 600; font-style: italic;
+    }
+    .nav-logo-text { font-family: var(--font-display); font-size: 1.5rem; color: var(--bordo); font-weight: 600; letter-spacing: -0.3px; }
+    .nav-logo-text span { color: var(--sepia); font-style: italic; font-weight: 500; }
+    .nav-back {
+      font-family: var(--font-ui); font-size: 0.85rem; font-weight: 500;
+      color: var(--ink-soft); text-decoration: none; letter-spacing: 0.3px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.25s;
+    }
+    .nav-back:hover { color: var(--bordo); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 140px 4vw 70px;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 70%, var(--paper) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 90% 30%, var(--bege-bg) 0%, transparent 55%),
+        var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .page-header-inner { max-width: 860px; margin: 0 auto; }
+    .page-header-kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-ui); font-size: 0.76rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--bordo);
+      margin-bottom: 1.2rem;
+    }
+    .page-header-kicker::before { content: '📖'; font-size: 1rem; }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08; letter-spacing: -1px; font-weight: 600;
+      color: var(--bordo-dark); margin-bottom: 1.2rem;
+    }
+    .page-header h1 em { color: var(--sepia-dark); font-style: italic; font-weight: 500; }
+    .header-cnpj {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--paper-2); border-left: 3px solid var(--bordo);
+      padding: 0.7rem 1.2rem; border-radius: 0 4px 4px 0;
+    }
+    .header-cnpj span { font-family: var(--font-ui); font-size: 0.74rem; color: var(--bordo-dark); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+    .header-cnpj strong { font-family: var(--font-ui); font-size: 0.9rem; color: var(--bordo-dark); font-weight: 700; }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px; margin: 0 auto; padding: 4rem 2rem 5rem;
+    }
+
+    .update-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--paper); border: 1px solid var(--line);
+      padding: 0.5rem 1.1rem; border-radius: 2px;
+      font-family: var(--font-ui); font-size: 0.76rem; font-weight: 600;
+      color: var(--sepia-dark); letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .update-badge::before { content: '🗓'; font-size: 0.9rem; }
+
+    .privacy-card {
+      background: var(--white); border-radius: 4px;
+      border-top: 3px solid var(--bordo);
+      box-shadow: 0 2px 10px rgba(97,39,48,0.06);
+      padding: 2.2rem 2.4rem; margin-bottom: 1.4rem;
+      transition: box-shadow 0.3s;
+    }
+    .privacy-card:hover { box-shadow: 0 8px 28px rgba(97,39,48,0.12); }
+    .card-number {
+      font-family: var(--font-display); font-size: 0.88rem;
+      color: var(--sepia-dark); font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+    .privacy-card h2 {
+      font-family: var(--font-display); font-size: 1.5rem;
+      color: var(--bordo-dark); font-weight: 600;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .privacy-card p {
+      font-family: var(--font-body); font-size: 1.05rem;
+      line-height: 1.75; color: var(--ink-soft);
+      margin-bottom: 0.8rem;
+    }
+    .privacy-card p:last-child { margin-bottom: 0; }
+    .privacy-card ul {
+      list-style: none; padding: 0; margin: 0.6rem 0 0.8rem;
+    }
+    .privacy-card ul li {
+      font-family: var(--font-body); font-size: 1.05rem;
+      line-height: 1.7; color: var(--ink-soft);
+      padding: 0.25rem 0 0.25rem 1.4rem; position: relative;
+    }
+    .privacy-card ul li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--bordo); font-weight: 700; font-size: 1.1rem;
+    }
+
+    .company-block {
+      background: var(--paper-2); border-left: 3px solid var(--bordo);
+      padding: 1rem 1.3rem; border-radius: 0 4px 4px 0;
+      margin: 0.8rem 0;
+    }
+    .company-block p {
+      font-family: var(--font-ui); font-size: 0.88rem;
+      color: var(--bordo-dark); line-height: 1.7;
+      margin: 0;
+    }
+    .company-block strong { font-weight: 700; }
+
+    .rights-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.8rem; margin-top: 0.8rem;
+    }
+    .right-item {
+      background: var(--paper); border-left: 3px solid var(--sepia);
+      padding: 0.8rem 1rem; border-radius: 0 4px 4px 0;
+    }
+    .right-item strong {
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700;
+      color: var(--bordo); letter-spacing: 0.5px; text-transform: uppercase;
+      display: block; margin-bottom: 0.2rem;
+    }
+    .right-item span {
+      font-family: var(--font-body); font-size: 0.95rem;
+      color: var(--ink-soft); line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer { background: var(--bordo-deep); padding: 70px 4vw 40px; color: rgba(245,232,203,0.65); border-top: 4px solid var(--sepia); }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,232,203,0.12); }
+    .footer-brand h2 { font-family: var(--font-display); font-size: 2.3rem; color: var(--bege-light); margin-bottom: 0.8rem; font-weight: 600; }
+    .footer-brand h2 span { color: var(--sepia-light); font-style: italic; font-weight: 500; }
+    .footer-brand p { font-family: var(--font-body); font-size: 1rem; color: rgba(245,232,203,0.7); line-height: 1.7; max-width: 340px; margin-bottom: 1.4rem; }
+    .footer-official { background: rgba(212,184,134,0.08); border-left: 3px solid var(--bege); padding: 1rem 1.2rem; border-radius: 0 4px 4px 0; }
+    .footer-official-title { font-family: var(--font-ui); font-size: 0.7rem; color: var(--bege); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem; }
+    .footer-official p { font-family: var(--font-body); font-size: 0.88rem; color: rgba(245,232,203,0.75); line-height: 1.7; }
+    .footer-official strong { color: var(--bege-light); font-weight: 600; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 1.25rem; color: var(--bege-light); margin-bottom: 1.2rem; font-weight: 600; font-style: italic; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a { font-family: var(--font-body); font-size: 0.95rem; color: rgba(245,232,203,0.6); text-decoration: none; transition: color 0.25s; }
+    .footer-col ul a:hover { color: var(--bege-light); }
+    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-legal p { font-family: var(--font-ui); font-size: 0.78rem; color: rgba(245,232,203,0.45); line-height: 1.7; }
+    .footer-legal strong { color: rgba(245,232,203,0.75); font-weight: 500; }
+    .footer-policy-links { display: flex; gap: 1.5rem; }
+    .footer-policy-links a { font-family: var(--font-ui); font-size: 0.78rem; color: rgba(245,232,203,0.45); text-decoration: none; }
+    .footer-policy-links a:hover { color: var(--bege); }
+    .footer-policy-links a.active { color: var(--bege); }
+
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .rights-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .content { padding: 3rem 1.2rem 4rem; }
+      .privacy-card { padding: 1.6rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-logo">
+    <div class="nav-logo-badge">PC</div>
+    <div class="nav-logo-text">Polaco & Coelho <span>Coleções</span></div>
+  </a>
+  <a href="../" class="nav-back">← Voltar ao site</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-kicker">Lei 13.709/2018 · LGPD</div>
+    <h1>Política de <em>Privacidade</em></h1>
+    <div class="header-cnpj">
+      <span>CNPJ:</span>
+      <strong>48.311.576/0001-04</strong>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="update-badge">Última atualização: 23 de abril de 2026</div>
+
+  <!-- 1. Informações Gerais -->
+  <div class="privacy-card">
+    <div class="card-number">i.</div>
+    <h2>Informações Gerais</h2>
+    <p>Esta Política de Privacidade descreve como a <strong>POLACO E COELHO COLECOES LTDA</strong> coleta, utiliza, armazena e protege os dados pessoais dos usuários deste site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).</p>
+    <div class="company-block">
+      <p>
+        <strong>POLACO E COELHO COLECOES LTDA</strong><br>
+        CNPJ: <strong>48.311.576/0001-04</strong><br>
+        AV CORONEL FRANCISCO H. DOS SANTOS, 1356 — JARDIM DAS AMERICAS<br>
+        CURITIBA — PR — CEP: 81.530-001<br>
+        Telefone: (67) 8468-5331<br>
+        E-mail: POLACOECOELHO@GMAIL.COM
+      </p>
+    </div>
+    <p>A base legal para o tratamento de dados é o legítimo interesse do controlador (art. 7º, IX da LGPD), o consentimento do titular (art. 7º, I) e a execução de contrato ou diligências pré-contratuais (art. 7º, V), conforme aplicável a cada finalidade.</p>
+  </div>
+
+  <!-- 2. Dados Coletados -->
+  <div class="privacy-card">
+    <div class="card-number">ii.</div>
+    <h2>Dados Coletados</h2>
+    <p>Ao interagir com nosso site — seja pelo formulário de contato, por consulta ao acervo ou para fins de atendimento comercial (varejo ou atacado) — podemos coletar os seguintes dados pessoais:</p>
+    <ul>
+      <li>Nome completo</li>
+      <li>Número de telefone</li>
+      <li>Endereço de e-mail</li>
+      <li>Tipo de produto ou item de interesse (livros, antiguidades, papelaria, brinquedos, esportes, variedades)</li>
+      <li>Informações sobre pedidos e preferências de compra (varejo e atacado)</li>
+      <li>Dados de navegação: endereço IP, tipo de navegador e páginas visitadas (de forma anonimizada, via cookies técnicos)</li>
+    </ul>
+    <p>Não coletamos dados sensíveis conforme definição do art. 5º, II da LGPD, nem dados de menores de 18 anos sem consentimento dos responsáveis legais.</p>
+  </div>
+
+  <!-- 3. Finalidade do Tratamento -->
+  <div class="privacy-card">
+    <div class="card-number">iii.</div>
+    <h2>Finalidade do Tratamento</h2>
+    <p>Os dados pessoais coletados são utilizados exclusivamente para as seguintes finalidades:</p>
+    <ul>
+      <li>Responder solicitações, dúvidas e pedidos de informação sobre o acervo</li>
+      <li>Verificar disponibilidade de itens — livros, antiquários, papelaria e variedades</li>
+      <li>Organizar atendimento atacadista de livros, publicações e jornais para revendas e instituições</li>
+      <li>Registrar e processar consultas sobre entregas e logística de pedidos</li>
+      <li>Enviar informações sobre nossos produtos e promoções, quando o titular autorizar expressamente</li>
+      <li>Cumprir obrigações legais e regulatórias aplicáveis à atividade comercial</li>
+    </ul>
+    <p>Os dados não são utilizados para fins de elaboração de perfil comportamental automatizado.</p>
+  </div>
+
+  <!-- 4. Armazenamento e Segurança -->
+  <div class="privacy-card">
+    <div class="card-number">iv.</div>
+    <h2>Armazenamento e Segurança</h2>
+    <p>Os dados coletados são armazenados em ambiente seguro, com controle de acesso restrito aos responsáveis pelo atendimento. Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados pessoais contra acesso não autorizado, perda, destruição ou divulgação indevida.</p>
+    <p>Os dados são mantidos apenas pelo tempo necessário para o cumprimento das finalidades descritas nesta política ou pelo prazo exigido por lei. Após esse período, são eliminados ou anonimizados.</p>
+    <p>Em caso de incidente de segurança que possa acarretar risco aos titulares, comunicaremos o fato à Autoridade Nacional de Proteção de Dados (ANPD) e aos titulares afetados, conforme previsto no art. 48 da LGPD.</p>
+  </div>
+
+  <!-- 5. Compartilhamento de Dados -->
+  <div class="privacy-card">
+    <div class="card-number">v.</div>
+    <h2>Compartilhamento de Dados</h2>
+    <p>A POLACO E COELHO COLECOES LTDA não comercializa, cede, aluga ou transfere dados pessoais a terceiros para fins de marketing ou publicidade.</p>
+    <p>O compartilhamento de dados poderá ocorrer somente nas seguintes hipóteses:</p>
+    <ul>
+      <li>Cumprimento de obrigação legal ou regulatória por determinação de autoridade competente</li>
+      <li>Proteção dos direitos da empresa em processos judiciais, administrativos ou arbitrais</li>
+      <li>Prestadores de serviços essenciais ao funcionamento da operação (ex.: plataformas de e-mail), desde que vinculados por obrigação de confidencialidade equivalente</li>
+    </ul>
+    <p>Em qualquer hipótese de compartilhamento, os dados são tratados com o mesmo nível de proteção descrito nesta política.</p>
+  </div>
+
+  <!-- 6. Seus Direitos -->
+  <div class="privacy-card">
+    <div class="card-number">vi.</div>
+    <h2>Seus Direitos</h2>
+    <p>Nos termos da Lei Geral de Proteção de Dados (art. 18), você, como titular, tem os seguintes direitos em relação aos seus dados pessoais:</p>
+    <div class="rights-grid">
+      <div class="right-item">
+        <strong>Confirmação e Acesso</strong>
+        <span>Confirmar a existência do tratamento e acessar os dados que mantemos sobre você.</span>
+      </div>
+      <div class="right-item">
+        <strong>Correção</strong>
+        <span>Solicitar a atualização ou correção de dados incompletos, inexatos ou desatualizados.</span>
+      </div>
+      <div class="right-item">
+        <strong>Anonimização ou Eliminação</strong>
+        <span>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade.</span>
+      </div>
+      <div class="right-item">
+        <strong>Portabilidade</strong>
+        <span>Receber seus dados em formato estruturado para transferência a outro fornecedor de serviço.</span>
+      </div>
+      <div class="right-item">
+        <strong>Informação sobre Compartilhamento</strong>
+        <span>Saber com quais entidades públicas ou privadas compartilhamos seus dados.</span>
+      </div>
+      <div class="right-item">
+        <strong>Revogação do Consentimento</strong>
+        <span>Retirar o consentimento a qualquer momento, sem prejuízo da licitude do tratamento anterior.</span>
+      </div>
+    </div>
+    <p style="margin-top: 1rem;">Para exercer qualquer um desses direitos, entre em contato pelos canais indicados na seção de contato abaixo.</p>
+  </div>
+
+  <!-- 7. Contato do Responsável -->
+  <div class="privacy-card">
+    <div class="card-number">vii.</div>
+    <h2>Contato do Responsável</h2>
+    <p>Dúvidas, solicitações relacionadas a dados pessoais ou exercício dos seus direitos como titular podem ser direcionadas ao controlador responsável:</p>
+    <div class="company-block">
+      <p>
+        <strong>POLACO E COELHO COLECOES LTDA</strong><br>
+        E-mail: <strong>POLACOECOELHO@GMAIL.COM</strong><br>
+        Telefone: <strong>(67) 8468-5331</strong><br>
+        Endereço: AV CORONEL FRANCISCO H. DOS SANTOS, 1356 — JARDIM DAS AMERICAS — CURITIBA — PR — CEP: 81.530-001<br>
+        Horário de atendimento: Segunda a Sexta, 09h – 19h · Sábado, 09h – 14h
+      </p>
+    </div>
+    <p>Nos comprometemos a responder às solicitações no prazo de até 15 (quinze) dias corridos, conforme previsto na LGPD.</p>
+  </div>
+
+  <!-- 8. Alterações desta Política -->
+  <div class="privacy-card">
+    <div class="card-number">viii.</div>
+    <h2>Alterações desta Política</h2>
+    <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças na legislação, nas práticas de tratamento de dados ou nos serviços oferecidos.</p>
+    <p>A data de última atualização sempre será indicada no topo desta página. Recomendamos a consulta periódica. O uso continuado do site após alterações implica a aceitação da versão vigente.</p>
+    <p>Versão atual: <strong>23 de abril de 2026</strong>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Polaco & Coelho <span>Coleções</span></h2>
+        <p>Livraria, antiguidades, papelaria, brinquedos, artigos esportivos e variedades em Curitiba – PR. Para quem aprecia ler, colecionar e descobrir.</p>
+        <div class="footer-official">
+          <div class="footer-official-title">Dados Oficiais da Empresa</div>
+          <p><strong>POLACO E COELHO COLECOES LTDA</strong><br>
+          CNPJ: <strong>48.311.576/0001-04</strong><br>
+          AV CORONEL FRANCISCO H. DOS SANTOS, 1356<br>
+          JARDIM DAS AMERICAS – CURITIBA – PR<br>
+          CEP: 81.530-001<br>
+          Tel: (67) 8468-5331<br>
+          E-mail: POLACOECOELHO@GMAIL.COM</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Acervo</h4>
+        <ul>
+          <li><a href="../#servicos">Livraria</a></li>
+          <li><a href="../#servicos">Atacado de Livros</a></li>
+          <li><a href="../#servicos">Antiguidades</a></li>
+          <li><a href="../#servicos">Papelaria</a></li>
+          <li><a href="../#servicos">Brinquedos & Esportes</a></li>
+          <li><a href="../#servicos">Variedades</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="../#sobre">Sobre Nós</a></li>
+          <li><a href="../#depoimentos">Clientes</a></li>
+          <li><a href="../#contato">Contato</a></li>
+          <li><a href="../privacy/" class="active">Política de Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <p>© 2026 <strong>POLACO E COELHO COLECOES LTDA</strong> — Todos os direitos reservados.</p>
+        <p>CNPJ: <strong>48.311.576/0001-04</strong> · AV CORONEL FRANCISCO H. DOS SANTOS, 1356, JARDIM DAS AMERICAS, CURITIBA – PR, CEP: 81.530-001 · Tel: (67) 8468-5331</p>
+      </div>
+      <div class="footer-policy-links">
+        <a href="../privacy/" class="active">Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

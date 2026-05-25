@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Polaco e Coelho Coleções - Livraria, antiguidades, papelaria, brinquedos, artigos esportivos e loja de variedades em Curitiba - PR.">
+  <meta name="keywords" content="livraria, antiguidades, papelaria, brinquedos, loja de variedades, artigos esportivos, Curitiba, Paraná">
+  <meta name="author" content="POLACO E COELHO COLECOES LTDA">
+  <meta name="geo.region" content="BR-PR">
+  <meta name="geo.placename" content="Curitiba">
+  <title>Polaco e Coelho Coleções | Livraria & Antiguidades – Curitiba/PR</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%23612730'/><text y='.92em' font-size='52' font-family='serif' font-style='italic' font-weight='600' fill='%23d4b886' x='14'>PC</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bordo: #612730;
+      --bordo-dark: #421a21;
+      --bordo-deep: #240e13;
+      --bordo-light: #823843;
+      --sepia: #8b6f47;
+      --sepia-dark: #6a522f;
+      --sepia-light: #b08f5e;
+      --bege: #d4b886;
+      --bege-light: #e4cca5;
+      --bege-bg: #f5e8cb;
+      --paper: #f9f1dc;
+      --paper-2: #ede2c4;
+      --bg: #fbf5e4;
+      --white: #ffffff;
+      --ink: #2a1f15;
+      --ink-soft: #5a4a36;
+      --grey: #8a7860;
+      --line: rgba(97,39,48,0.18);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'EB Garamond', serif;
+      --font-ui: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: var(--bordo); border-radius: 4px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 4vw; height: 80px;
+      background: rgba(251,245,228,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-badge {
+      width: 48px; height: 48px;
+      background: var(--bordo); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 22px; color: var(--bege); font-weight: 600; font-style: italic;
+    }
+    .nav-logo-text { font-family: var(--font-display); font-size: 1.5rem; color: var(--bordo); font-weight: 600; letter-spacing: -0.3px; }
+    .nav-logo-text span { color: var(--sepia); font-style: italic; font-weight: 500; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 0.9rem; font-weight: 500;
+      color: var(--ink-soft); text-decoration: none; letter-spacing: 0.3px;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--bordo); }
+    .nav-cta {
+      color: var(--bege) !important; background: var(--bordo);
+      padding: 0.55rem 1.4rem; border-radius: 4px;
+      font-weight: 600 !important;
+      transition: background 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--bordo-dark) !important; color: var(--bege) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--bordo); transition: all 0.3s; }
+
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 130px 4vw 80px;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 70%, var(--paper) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 90% 30%, var(--bege-bg) 0%, transparent 55%),
+        var(--bg);
+    }
+    .hero-book {
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%) rotate(-8deg);
+      width: 280px; height: 360px;
+      pointer-events: none; opacity: 0.20;
+      background: var(--bordo);
+      border-radius: 4px 12px 12px 4px;
+      box-shadow: -8px 0 0 var(--sepia), -16px 0 0 var(--bege-light);
+    }
+    .hero-book::before {
+      content: ''; position: absolute; top: 30px; left: 30px; right: 30px;
+      height: 6px; background: var(--bege); border-radius: 1px;
+    }
+    .hero-book::after {
+      content: ''; position: absolute; top: 50px; left: 30px; right: 30px;
+      height: 3px; background: var(--bege); border-radius: 1px;
+      box-shadow: 0 200px 0 var(--bege);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--paper); border: 1px solid var(--bordo);
+      padding: 0.5rem 1.2rem; border-radius: 2px;
+      font-family: var(--font-ui); font-size: 0.76rem; font-weight: 600;
+      color: var(--bordo); letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+    .hero-tag::before { content: '📖'; font-size: 1rem; }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.8vw, 5.6rem);
+      line-height: 1.0; letter-spacing: -1.5px; font-weight: 600;
+      color: var(--bordo-dark); margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent { color: var(--sepia-dark); font-style: italic; font-weight: 500; display: block; }
+    .hero h1 .ornament { color: var(--bege); font-style: italic; font-size: 0.95em; }
+    .hero-desc {
+      font-family: var(--font-body);
+      font-size: 1.15rem; line-height: 1.7;
+      color: var(--ink-soft); max-width: 560px;
+      margin-bottom: 2.4rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bordo); color: var(--bege-light);
+      font-family: var(--font-ui); font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.5px; text-decoration: none;
+      padding: 1rem 2.2rem; border: none; cursor: pointer; border-radius: 3px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--bordo-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--sepia-dark); color: var(--sepia-dark); background: transparent;
+      font-family: var(--font-ui); font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.5px; text-decoration: none;
+      padding: 0.9rem 2.2rem; border-radius: 3px; transition: all 0.25s;
+    }
+    .btn-secondary:hover { background: var(--sepia-dark); color: var(--paper); }
+    .hero-stats {
+      margin-top: 4rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .stat-num { font-family: var(--font-display); font-size: 3rem; color: var(--bordo); line-height: 1; font-weight: 600; font-style: italic; }
+    .stat-label { font-family: var(--font-ui); font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 1.2px; text-transform: uppercase; margin-top: 6px; font-weight: 500; }
+
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1240px; margin: 0 auto; padding: 0 4vw; }
+    .section-kicker {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--bordo);
+      margin-bottom: 0.8rem;
+    }
+    .section-kicker::before { content: '\2766'; color: var(--sepia); font-size: 1.05rem; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+      letter-spacing: -1px; line-height: 1.1; font-weight: 600;
+      color: var(--bordo-dark); margin-bottom: 1.3rem;
+    }
+    .section-title em { color: var(--sepia-dark); font-style: italic; font-weight: 500; }
+    .section-desc { font-family: var(--font-body); font-size: 1.1rem; line-height: 1.75; color: var(--ink-soft); max-width: 600px; }
+
+    #sobre { padding: 110px 0; background: var(--paper); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual { position: relative; }
+    .about-visual-box {
+      background: var(--bordo); padding: 3rem 2.6rem;
+      position: relative; color: var(--bege-light);
+      border-radius: 4px;
+    }
+    .about-visual-box::before {
+      content: ''; position: absolute; top: -16px; left: -16px;
+      width: 60%; height: 60%; z-index: -1;
+      border: 2px solid var(--sepia); border-radius: 4px;
+    }
+    .about-icon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; position: relative; z-index: 1; }
+    .about-icon-item {
+      background: var(--bordo-dark); border-left: 3px solid var(--bege);
+      padding: 1.4rem 1.2rem; border-radius: 2px;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .about-icon-item:hover { transform: translateX(4px); background: var(--bordo-deep); }
+    .about-icon-item .icon { font-size: 1.9rem; display: block; margin-bottom: 0.5rem; }
+    .about-icon-item h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--bege-light); }
+    .about-icon-item p { font-family: var(--font-ui); font-size: 0.8rem; color: rgba(228,204,165,0.72); line-height: 1.5; margin-top: 0.3rem; }
+    .about-text p { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .about-text p strong { color: var(--bordo); font-weight: 600; }
+    .cnpj-badge {
+      margin-top: 1.8rem; display: inline-flex; align-items: center; gap: 12px;
+      background: var(--paper-2); border-left: 3px solid var(--bordo);
+      padding: 0.85rem 1.4rem; border-radius: 0 4px 4px 0;
+    }
+    .cnpj-badge span { font-family: var(--font-ui); font-size: 0.76rem; color: var(--bordo-dark); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+    .cnpj-badge strong { font-family: var(--font-ui); font-size: 0.92rem; color: var(--bordo-dark); font-weight: 700; }
+
+    #servicos { padding: 110px 0; background: var(--bg); }
+    .services-header { margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+    .service-card {
+      background: var(--white); padding: 2.4rem 2rem;
+      transition: all 0.35s; border-radius: 4px;
+      position: relative; box-shadow: 0 2px 10px rgba(97,39,48,0.06);
+      border-top: 3px solid var(--bordo);
+    }
+    .service-card:hover { transform: translateY(-6px); border-top-color: var(--sepia); box-shadow: 0 14px 32px rgba(97,39,48,0.14); }
+    .service-number { font-family: var(--font-display); font-size: 1rem; color: var(--sepia-dark); margin-bottom: 0.6rem; font-style: italic; }
+    .service-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+    .service-card h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--bordo-dark); margin-bottom: 0.7rem; font-weight: 600; }
+    .service-card p { font-family: var(--font-body); font-size: 1rem; color: var(--ink-soft); line-height: 1.65; }
+
+    #depoimentos { padding: 110px 0; background: var(--paper); }
+    .testimonials-header { margin-bottom: 3.5rem; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .testimonial-card {
+      background: var(--white); padding: 2.4rem 2rem;
+      position: relative; border-radius: 4px; transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(97,39,48,0.06);
+      border-left: 3px solid var(--bordo);
+    }
+    .testimonial-card:hover { border-left-color: var(--sepia); transform: translateY(-4px); }
+    .testimonial-card::before {
+      content: '\201C'; font-family: var(--font-display); font-size: 5rem; line-height: 1;
+      color: var(--bordo); opacity: 0.4; position: absolute; top: 0.5rem; left: 1.5rem; font-weight: 600;
+    }
+    .testimonial-text { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-top: 1.5rem; margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 4px;
+      background: var(--bordo); color: var(--bege);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 600;
+    }
+    .author-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--bordo-dark); font-weight: 600; }
+    .author-role { font-family: var(--font-ui); font-size: 0.78rem; color: var(--grey); }
+    .stars { color: var(--sepia-dark); font-size: 0.88rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+
+    #contato { padding: 110px 0 0; background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4.5rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.6rem; }
+    .contact-icon {
+      width: 46px; height: 46px; border-radius: 4px;
+      background: var(--bordo); color: var(--bege); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+    }
+    .contact-item h4 { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; color: var(--bordo); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .contact-item p, .contact-item a { font-family: var(--font-body); font-size: 1rem; color: var(--ink-soft); line-height: 1.6; text-decoration: none; }
+    .contact-item a:hover { color: var(--bordo); }
+    .contact-form-block { background: var(--paper); padding: 2.6rem 2.4rem; border-radius: 4px; border-top: 4px solid var(--bordo); }
+    .contact-form-block h3 { font-family: var(--font-display); font-size: 1.9rem; color: var(--bordo-dark); margin-bottom: 1.5rem; font-weight: 600; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-family: var(--font-ui); font-size: 0.74rem; font-weight: 600; color: var(--ink-soft); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; background: var(--white); border: 1px solid var(--line);
+      color: var(--ink); font-family: var(--font-body); font-size: 1rem;
+      padding: 0.85rem 1rem; outline: none; transition: border-color 0.3s; border-radius: 3px;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--bordo); }
+    .form-submit {
+      width: 100%; padding: 1.05rem; background: var(--bordo); color: var(--bege-light); border: none;
+      font-family: var(--font-ui); font-size: 0.95rem; font-weight: 600; letter-spacing: 1px;
+      cursor: pointer; border-radius: 3px;
+      transition: background 0.25s, transform 0.2s; margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: var(--bordo-dark); transform: translateY(-2px); }
+    .form-success {
+      display: none; background: rgba(139,111,71,0.12); border: 1px solid var(--sepia);
+      padding: 1rem; color: var(--sepia-dark); font-size: 0.95rem; text-align: center; margin-top: 1rem; border-radius: 3px;
+    }
+
+    .map-stripe {
+      background: var(--bordo-dark); color: var(--bege-light);
+      padding: 1.6rem 4vw; display: flex; align-items: center; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-top: 4rem;
+    }
+    .map-stripe p { font-family: var(--font-body); font-size: 0.98rem; }
+    .map-stripe strong { color: var(--bege); }
+    .map-link { font-family: var(--font-display); font-size: 0.92rem; font-style: italic; color: var(--bege); text-decoration: none; border-bottom: 1px solid var(--bege); padding-bottom: 1px; }
+    .map-link:hover { color: var(--paper); border-color: var(--paper); }
+
+    footer { background: var(--bordo-deep); padding: 70px 4vw 40px; color: rgba(245,232,203,0.65); border-top: 4px solid var(--sepia); }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,232,203,0.12); }
+    .footer-brand h2 { font-family: var(--font-display); font-size: 2.3rem; color: var(--bege-light); margin-bottom: 0.8rem; font-weight: 600; }
+    .footer-brand h2 span { color: var(--sepia-light); font-style: italic; font-weight: 500; }
+    .footer-brand p { font-family: var(--font-body); font-size: 1rem; color: rgba(245,232,203,0.7); line-height: 1.7; max-width: 340px; margin-bottom: 1.4rem; }
+    .footer-official { background: rgba(212,184,134,0.08); border-left: 3px solid var(--bege); padding: 1rem 1.2rem; border-radius: 0 4px 4px 0; }
+    .footer-official-title { font-family: var(--font-ui); font-size: 0.7rem; color: var(--bege); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem; }
+    .footer-official p { font-family: var(--font-body); font-size: 0.88rem; color: rgba(245,232,203,0.75); line-height: 1.7; }
+    .footer-official strong { color: var(--bege-light); font-weight: 600; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 1.25rem; color: var(--bege-light); margin-bottom: 1.2rem; font-weight: 600; font-style: italic; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a { font-family: var(--font-body); font-size: 0.95rem; color: rgba(245,232,203,0.6); text-decoration: none; transition: color 0.25s; }
+    .footer-col ul a:hover { color: var(--bege-light); }
+    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-legal p { font-family: var(--font-ui); font-size: 0.78rem; color: rgba(245,232,203,0.45); line-height: 1.7; }
+    .footer-legal strong { color: rgba(245,232,203,0.75); font-weight: 500; }
+    .footer-policy-links { display: flex; gap: 1.5rem; }
+    .footer-policy-links a { font-family: var(--font-ui); font-size: 0.78rem; color: rgba(245,232,203,0.45); text-decoration: none; }
+    .footer-policy-links a:hover { color: var(--bege); }
+
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(36,14,19,0.86); backdrop-filter: blur(6px);
+      overflow-y: auto; padding: 4vh 4vw;
+    }
+    .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+    .modal-box {
+      background: var(--paper); border-top: 4px solid var(--bordo);
+      max-width: 820px; width: 100%; padding: 3rem;
+      position: relative; margin: auto; border-radius: 4px;
+    }
+    .modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; color: var(--ink-soft); font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: var(--bordo); }
+    .modal-box h2 { font-family: var(--font-display); font-size: 2.2rem; color: var(--bordo-dark); margin-bottom: 0.5rem; font-weight: 600; }
+    .modal-box .modal-updated { font-size: 0.85rem; color: var(--grey); margin-bottom: 1.5rem; font-style: italic; font-family: var(--font-body); }
+    .modal-box h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--sepia-dark); margin: 1.6rem 0 0.6rem; font-weight: 600; }
+    .modal-box p, .modal-box li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--ink-soft); }
+    .modal-box ul { padding-left: 1.4rem; margin-top: 0.4rem; }
+    .modal-box ul li { margin-bottom: 0.3rem; }
+    .modal-box .modal-company-data { background: var(--paper-2); border-left: 3px solid var(--bordo); padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .modal-box .modal-company-data p { font-size: 0.95rem; color: var(--bordo-dark); }
+    hr.modal-divider { border: none; border-top: 1px solid var(--line); margin: 2.2rem 0; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: var(--paper); padding: 1.5rem 4vw; gap: 1.2rem; border-bottom: 1px solid var(--line); }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) { .services-grid { grid-template-columns: 1fr; } .hero-stats { gap: 2rem; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-badge">PC</div>
+    <div class="nav-logo-text">Polaco & Coelho <span>Coleções</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Acervo</a></li>
+    <li><a href="#depoimentos">Clientes</a></li>
+    <li><a href="#contato" class="nav-cta">Visitar</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-book"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Jardim das Américas · Curitiba/PR</div>
+    <h1>
+      Livros, coleções<br>
+      <span class="accent">e antiguidades</span><br>
+      <span class="ornament">— para quem aprecia.</span>
+    </h1>
+    <p class="hero-desc">Livraria, antiguidades, papelaria, brinquedos, artigos esportivos e variedades. Um endereço para quem aprecia ler, colecionar e descobrir, em Curitiba – PR.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">📖 Visitar a Loja</a>
+      <a href="#servicos" class="btn-secondary">Nosso Acervo →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">2022</div><div class="stat-label">Atendendo desde</div></div>
+      <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">Atividades comerciais</div></div>
+      <div class="stat-item"><div class="stat-num">PR</div><div class="stat-label">Curitiba e região</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-visual-box">
+          <div class="about-icon-grid">
+            <div class="about-icon-item"><span class="icon">📚</span><h4>Livros</h4><p>Varejo e atacado</p></div>
+            <div class="about-icon-item"><span class="icon">🕰️</span><h4>Antiguidades</h4><p>Peças selecionadas</p></div>
+            <div class="about-icon-item"><span class="icon">✏️</span><h4>Papelaria</h4><p>Artigos para escrita</p></div>
+            <div class="about-icon-item"><span class="icon">🎲</span><h4>Variedades</h4><p>Brinquedos, esportes e mais</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-kicker">A Loja</div>
+        <h2 class="section-title">Um lugar para <em>colecionadores</em></h2>
+        <p>A <strong>Polaco e Coelho Coleções</strong> é uma loja sediada em Curitiba – PR, com atividade principal de comércio varejista de livros, e atuação ampla em atacado de livros e publicações, jornais e revistas, papelaria, brinquedos, artigos esportivos, antiguidades e outros artigos usados.</p>
+        <p>Também operamos como loja de variedades, com curadoria atenta a quem aprecia ler, colecionar e descobrir peças com história. Atendimento próximo, acervo selecionado e ambiente convidativo.</p>
+        <p>Situação cadastral <strong>ATIVA</strong> perante a Receita Federal desde 2022, no bairro Jardim das Américas.</p>
+        <div class="cnpj-badge"><span>CNPJ:</span><strong>48.311.576/0001-04</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="section-inner">
+    <div class="services-header reveal">
+      <div class="section-kicker">Nosso acervo</div>
+      <h2 class="section-title">O que <em>encontrar</em></h2>
+      <p class="section-desc">Da literatura clássica às raridades, da papelaria aos brinquedos — um acervo amplo, com curadoria de quem entende.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-number">i.</div><span class="service-icon">📚</span><h3>Livraria</h3><p>Atividade principal (CNAE 47.61-0-01). Comércio varejista de livros, com curadoria atenta a literatura, técnico e infantil.</p></div>
+      <div class="service-card reveal"><div class="service-number">ii.</div><span class="service-icon">📦</span><h3>Atacado de Livros</h3><p>Comércio atacadista de livros, jornais e outras publicações (CNAE 46.47-8-02), para revendas e instituições.</p></div>
+      <div class="service-card reveal"><div class="service-number">iii.</div><span class="service-icon">🕰️</span><h3>Antiguidades</h3><p>Comércio varejista de antiguidades (CNAE 47.85-7-01). Peças selecionadas para colecionadores e apreciadores.</p></div>
+      <div class="service-card reveal"><div class="service-number">iv.</div><span class="service-icon">✏️</span><h3>Papelaria & Revistas</h3><p>Jornais, revistas (CNAE 47.61-0-02) e papelaria (CNAE 47.61-0-03), com acervo variado para o dia a dia.</p></div>
+      <div class="service-card reveal"><div class="service-number">v.</div><span class="service-icon">🎲</span><h3>Brinquedos & Esportes</h3><p>Brinquedos e artigos recreativos (CNAE 47.63-6-01) e artigos esportivos (CNAE 47.63-6-02). Diversão e movimento.</p></div>
+      <div class="service-card reveal"><div class="service-number">vi.</div><span class="service-icon">🎁</span><h3>Loja de Variedades</h3><p>Atuamos também como loja de variedades (CNAE 47.13-0-02) e com outros artigos usados (CNAE 47.85-7-99).</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos">
+  <div class="section-inner">
+    <div class="testimonials-header reveal">
+      <div class="section-kicker">Clientes</div>
+      <h2 class="section-title">O que dizem<br>nossos <em>clientes</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Loja deliciosa de explorar. Acharam um livro antigo que eu procurava há anos. Atendimento próximo, sem pressa. Virou parada obrigatória sempre que passo em Curitiba.</p>
+        <div class="testimonial-author"><div class="author-avatar">B</div><div><div class="author-name">Beatriz L.</div><div class="author-role">Cliente — Curitiba/PR</div></div></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Tem de tudo: livro, papelaria pra meus filhos, brinquedos, e até peça antiga pra decorar a casa. É uma daquelas lojas em que sempre se acha alguma coisa interessante.</p>
+        <div class="testimonial-author"><div class="author-avatar">M</div><div><div class="author-name">Marcos T.</div><div class="author-role">Cliente — Curitiba/PR</div></div></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Atendimento atencioso e curadoria interessante. As antiguidades são uma delícia e o pessoal entende muito do acervo. Recomendo a quem aprecia bons achados.</p>
+        <div class="testimonial-author"><div class="author-avatar">F</div><div><div class="author-name">Fernanda S.</div><div class="author-role">Colecionadora — São José dos Pinhais/PR</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info-block reveal">
+        <div class="section-kicker">Fale conosco</div>
+        <h2 class="section-title">Visite a<br><em>loja</em></h2>
+        <p class="section-desc" style="margin-bottom:2.5rem">Entre em contato para informações sobre o acervo, consultas, atacado de livros ou para combinar uma visita ao nosso endereço em Curitiba.</p>
+
+        <div class="contact-item"><div class="contact-icon">📍</div><div><h4>Endereço</h4><p>AV CORONEL FRANCISCO H. DOS SANTOS, 1356<br>JARDIM DAS AMERICAS<br>CURITIBA – PR<br>CEP: 81.530-001</p></div></div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><h4>Telefone</h4><a href="tel:+556784685331">(67) 8468-5331</a></div></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>E-mail</h4><a href="mailto:POLACOECOELHO@GMAIL.COM">POLACOECOELHO@GMAIL.COM</a></div></div>
+        <div class="contact-item"><div class="contact-icon">🕐</div><div><h4>Horário de Atendimento</h4><p>Segunda a Sexta: 09h – 19h<br>Sábado: 09h – 14h</p></div></div>
+      </div>
+
+      <div class="contact-form-block reveal">
+        <h3>Envie sua mensagem</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Nome *</label><input type="text" placeholder="Seu nome" required></div>
+            <div class="form-group"><label>Telefone *</label><input type="tel" placeholder="(41) 00000-0000" required></div>
+          </div>
+          <div class="form-group"><label>E-mail</label><input type="email" placeholder="seu@email.com"></div>
+          <div class="form-group">
+            <label>Interesse</label>
+            <select>
+              <option value="">Selecione...</option>
+              <option>Livros (varejo)</option>
+              <option>Livros (atacado)</option>
+              <option>Antiguidades</option>
+              <option>Papelaria</option>
+              <option>Brinquedos / Esportes</option>
+              <option>Variedades</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Mensagem *</label><textarea rows="5" placeholder="O que você está procurando..." required></textarea></div>
+          <button type="submit" class="form-submit">📖 Enviar Mensagem</button>
+          <div class="form-success" id="formSuccess">✓ Mensagem enviada! Retornaremos em breve.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-stripe">
+    <p>📍 <strong>AV CORONEL FRANCISCO H. DOS SANTOS, 1356 — JARDIM DAS AMERICAS — CURITIBA/PR — CEP 81.530-001</strong></p>
+    <a href="https://maps.google.com/?q=Av+Coronel+Francisco+H+dos+Santos+1356+Jardim+das+Americas+Curitiba+PR" target="_blank" class="map-link">Ver no Maps →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Polaco & Coelho <span>Coleções</span></h2>
+        <p>Livraria, antiguidades, papelaria, brinquedos, artigos esportivos e variedades em Curitiba – PR. Para quem aprecia ler, colecionar e descobrir.</p>
+        <div class="footer-official">
+          <div class="footer-official-title">Dados Oficiais da Empresa</div>
+          <p><strong>POLACO E COELHO COLECOES LTDA</strong><br>
+          CNPJ: <strong>48.311.576/0001-04</strong><br>
+          AV CORONEL FRANCISCO H. DOS SANTOS, 1356<br>
+          JARDIM DAS AMERICAS – CURITIBA – PR<br>
+          CEP: 81.530-001<br>
+          Tel: (67) 8468-5331<br>
+          E-mail: POLACOECOELHO@GMAIL.COM</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Acervo</h4>
+        <ul>
+          <li><a href="#servicos">Livraria</a></li>
+          <li><a href="#servicos">Atacado de Livros</a></li>
+          <li><a href="#servicos">Antiguidades</a></li>
+          <li><a href="#servicos">Papelaria</a></li>
+          <li><a href="#servicos">Brinquedos & Esportes</a></li>
+          <li><a href="#servicos">Variedades</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#depoimentos">Clientes</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#" onclick="openModal('privacy')">Política de Privacidade</a></li>
+          <li><a href="#" onclick="openModal('terms')">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <p>© 2026 <strong>POLACO E COELHO COLECOES LTDA</strong> - Todos os direitos reservados.</p>
+        <p>CNPJ: <strong>48.311.576/0001-04</strong> · AV CORONEL FRANCISCO H. DOS SANTOS, 1356, JARDIM DAS AMERICAS, CURITIBA – PR, CEP: 81.530-001 · Tel: (67) 8468-5331</p>
+      </div>
+      <div class="footer-policy-links">
+        <a href="#" onclick="openModal('privacy')">Privacidade</a>
+        <a href="#" onclick="openModal('terms')">Termos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    <h2>POLÍTICA DE PRIVACIDADE</h2>
+    <p class="modal-updated">Última atualização: maio de 2026</p>
+    <div class="modal-company-data">
+      <p><strong>POLACO E COELHO COLECOES LTDA</strong> | CNPJ: 48.311.576/0001-04<br>
+      AV CORONEL FRANCISCO H. DOS SANTOS, 1356 – JARDIM DAS AMERICAS – CURITIBA – PR – CEP: 81.530-001<br>
+      E-mail: POLACOECOELHO@GMAIL.COM | Tel: (67) 8468-5331</p>
+    </div>
+    <h3>1. Quem somos</h3>
+    <p>A POLACO E COELHO COLECOES LTDA, inscrita no CNPJ sob o nº 48.311.576/0001-04, com sede na AV CORONEL FRANCISCO H. DOS SANTOS, 1356, Bairro Jardim das Américas, Curitiba – PR, CEP 81.530-001, é responsável pelo tratamento dos dados pessoais coletados neste site.</p>
+    <h3>2. Dados que coletamos</h3>
+    <p>Ao utilizar nosso formulário de contato ou consultar acervo, podemos coletar:</p>
+    <ul><li>Nome completo</li><li>Número de telefone</li><li>Endereço de e-mail</li><li>Informações sobre o produto ou item de interesse</li></ul>
+    <h3>3. Finalidade do tratamento</h3>
+    <p>Os dados são utilizados para: responder solicitações, verificar disponibilidade de itens, organizar atendimento atacadista e enviar informações sobre nossos produtos quando autorizado.</p>
+    <h3>4. Compartilhamento de dados</h3>
+    <p>Não compartilhamos, vendemos ou cedemos seus dados a terceiros, exceto quando exigido por lei.</p>
+    <h3>5. Seus direitos (LGPD)</h3>
+    <p>Conforme a Lei Geral de Proteção de Dados, você pode solicitar a qualquer momento: acesso, correção, exclusão ou portabilidade dos seus dados pelo e-mail POLACOECOELHO@GMAIL.COM.</p>
+    <h3>6. Contato do controlador</h3>
+    <p>Para dúvidas: POLACOECOELHO@GMAIL.COM | (67) 8468-5331</p>
+    <hr class="modal-divider">
+    <p style="font-size:0.82rem;color:var(--grey)">© 2026 POLACO E COELHO COLECOES LTDA – CNPJ 48.311.576/0001-04 – Todos os direitos reservados.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    <h2>TERMOS DE USO</h2>
+    <p class="modal-updated">Última atualização: maio de 2026</p>
+    <div class="modal-company-data">
+      <p><strong>POLACO E COELHO COLECOES LTDA</strong> | CNPJ: 48.311.576/0001-04<br>
+      AV CORONEL FRANCISCO H. DOS SANTOS, 1356 – JARDIM DAS AMERICAS – CURITIBA – PR – CEP: 81.530-001<br>
+      E-mail: POLACOECOELHO@GMAIL.COM | Tel: (67) 8468-5331</p>
+    </div>
+    <h3>1. Aceitação dos termos</h3>
+    <p>Ao acessar e utilizar este site, você concorda com os presentes Termos de Uso. Caso não concorde, pedimos que não utilize o site.</p>
+    <h3>2. Sobre a empresa</h3>
+    <p>Este site pertence à POLACO E COELHO COLECOES LTDA, empresa regularmente constituída, com CNPJ 48.311.576/0001-04, situação cadastral ATIVA perante a Receita Federal, atuante em comércio varejista de livros (CNAE 47.61-0-01) e demais atividades de varejo e atacado de livros, papelaria, antiguidades, brinquedos, artigos esportivos e variedades.</p>
+    <h3>3. Uso do site</h3>
+    <p>Este site tem finalidade informativa e comercial. É vedado:</p>
+    <ul><li>Utilizar o site para fins ilícitos ou que violem direitos de terceiros</li><li>Reproduzir conteúdo sem autorização prévia e por escrito</li><li>Submeter informações falsas no formulário de contato</li></ul>
+    <h3>4. Disponibilidade e preços</h3>
+    <p>As informações apresentadas são ilustrativas. Disponibilidade de itens, preços e condições são confirmados após contato direto e verificação na loja.</p>
+    <h3>5. Propriedade intelectual</h3>
+    <p>Todo o conteúdo deste site é de propriedade da POLACO E COELHO COLECOES LTDA e não pode ser reproduzido sem autorização.</p>
+    <h3>6. Responsabilidade</h3>
+    <p>A empresa não se responsabiliza por falhas temporárias de acesso ao site. Para os produtos comercializados, vale o Código Civil Brasileiro e o Código de Defesa do Consumidor.</p>
+    <h3>7. Foro</h3>
+    <p>Fica eleito o foro da Comarca de Curitiba – PR para dirimir controvérsias.</p>
+    <hr class="modal-divider">
+    <p style="font-size:0.82rem;color:var(--grey)">© 2026 POLACO E COELHO COLECOES LTDA – CNPJ 48.311.576/0001-04 – Todos os direitos reservados.</p>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Enviando...'; btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('formSuccess').style.display = 'block';
+      btn.textContent = '📖 Enviar Mensagem'; btn.disabled = false;
+      e.target.reset();
+      setTimeout(() => document.getElementById('formSuccess').style.display = 'none', 5000);
+    }, 1200);
+  }
+
+  function openModal(id) {
+    event.preventDefault();
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) { m.classList.remove('open'); document.body.style.overflow = ''; } });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+    }
+  });
+</script>
+</body>
+</html>
