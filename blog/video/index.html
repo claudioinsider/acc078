@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-is-click-bank
+      async
+      defer
+    ></script>
+
+    <script>
+      window.googlePixelId = "6a3b07fd464d22c2f476baed";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-google.js");
+      document.head.appendChild(a);
+    </script>
+
+    <script>
+      ;(function () {
+        function getParam(name) {
+          try {
+            return new URL(window.location.href).searchParams.get(name) || ""
+          } catch (e) {
+            return ""
+          }
+        }
+
+        function extractId(value) {
+          if (!value) return ""
+          var parts = value.split("|")
+          return parts.length > 1 ? parts[parts.length - 1] : parts[0]
+        }
+        var utm_source = extractId(getParam("utm_source"))
+        var utm_campaign = extractId(getParam("utm_campaign"))
+        var utm_medium = extractId(getParam("utm_medium"))
+        var utm_content = extractId(getParam("utm_content"))
+        var utm_term = extractId(getParam("utm_term"))
+        if (
+          !utm_source &&
+          !utm_campaign &&
+          !utm_medium &&
+          !utm_content &&
+          !utm_term
+        ) {
+          return
+        }
+        var hopBase = "https://bb94c7fhof448l5annqgc3as3w.hop.clickbank.net"
+        var params = [
+          "aff_sub1=" + encodeURIComponent(utm_source),
+          "aff_sub2=" + encodeURIComponent(utm_campaign),
+          "aff_sub3=" + encodeURIComponent(utm_medium),
+          "aff_sub4=" + encodeURIComponent(utm_content),
+          "aff_sub5=" + encodeURIComponent(utm_term),
+          "unique_aff_sub1=" + encodeURIComponent(utm_source),
+          "unique_aff_sub2=" + encodeURIComponent(utm_campaign),
+          "unique_aff_sub3=" + encodeURIComponent(utm_medium),
+          "unique_aff_sub4=" + encodeURIComponent(utm_content),
+          "unique_aff_sub5=" + encodeURIComponent(utm_term),
+        ]
+        var hopUrl = hopBase + "?" + params.join("&")
+        var iframe = document.createElement("iframe")
+        iframe.src = hopUrl
+        iframe.width = "0"
+        iframe.height = "0"
+        iframe.style.cssText =
+          "display:none;width:0;height:0;border:0;position:absolute;left:-9999px;"
+        iframe.setAttribute("tabindex", "-1")
+        iframe.setAttribute("aria-hidden", "true")
+        iframe.setAttribute("title", "")
+        if (document.body) {
+          document.body.appendChild(iframe)
+        } else {
+          document.addEventListener("DOMContentLoaded", function () {
+            document.body.appendChild(iframe)
+          })
+        }
+        console.log("[HopLink] IDs extraídos:", {
+          aff_sub1: utm_source,
+          aff_sub2: utm_campaign,
+          aff_sub3: utm_medium,
+          aff_sub4: utm_content,
+          aff_sub5: utm_term,
+        })
+        console.log("[HopLink] URL:", hopUrl)
+      })()
+    </script>
+
+    <script>
+      ;(function () {
+        var hopBase = "https://bb94c7fhof448l5annqgc3as3w.hop.clickbank.net"
+
+        function getParam(name) {
+          try {
+            return new URL(window.location.href).searchParams.get(name) || ""
+          } catch (e) {
+            return ""
+          }
+        }
+
+        function extractId(value) {
+          if (!value) return ""
+          var parts = value.split("|")
+          return parts.length > 1 ? parts[parts.length - 1] : parts[0]
+        }
+
+        function buildAndFireHopLink(vturbCk) {
+          var utm_source = extractId(getParam("utm_source"))
+          var utm_campaign = extractId(getParam("utm_campaign"))
+          var utm_medium = extractId(getParam("utm_medium"))
+          var utm_content = extractId(getParam("utm_content"))
+          var utm_term = extractId(getParam("utm_term"))
+
+          var hopUrlObj = new URL(hopBase)
+
+          // Copia todos os parâmetros da URL atual para a hop URL
+          try {
+            var currentParams = new URL(window.location.href).searchParams
+            currentParams.forEach(function (value, key) {
+              if (!hopUrlObj.searchParams.has(key)) {
+                hopUrlObj.searchParams.set(key, value)
+              }
+            })
+          } catch (e) {}
+
+          // Adiciona aff_sub e unique_aff_sub apenas se não existirem
+          var affSubs = {
+            aff_sub1: utm_source || vturbCk || "",
+            aff_sub2: utm_campaign || vturbCk || "",
+            aff_sub3: utm_medium || vturbCk || "",
+            aff_sub4: utm_content || vturbCk || "",
+            aff_sub5: vturbCk || utm_term || "",
+            unique_aff_sub1: utm_source || vturbCk || "",
+            unique_aff_sub2: utm_campaign || vturbCk || "",
+            unique_aff_sub3: utm_medium || vturbCk || "",
+            unique_aff_sub4: utm_content || vturbCk || "",
+            unique_aff_sub5: vturbCk || utm_term || "",
+          }
+
+          for (var key in affSubs) {
+            if (!hopUrlObj.searchParams.has(key)) {
+              hopUrlObj.searchParams.set(key, affSubs[key])
+            }
+          }
+
+          var hopUrl = hopUrlObj.toString()
+
+          var iframe = document.createElement("iframe")
+          iframe.src = hopUrl
+          iframe.width = "0"
+          iframe.height = "0"
+          iframe.style.cssText =
+            "display:none;width:0;height:0;border:0;position:absolute;left:-9999px;"
+          iframe.setAttribute("tabindex", "-1")
+          iframe.setAttribute("aria-hidden", "true")
+          iframe.setAttribute("title", "")
+
+          if (document.body) {
+            document.body.appendChild(iframe)
+          } else {
+            document.addEventListener("DOMContentLoaded", function () {
+              document.body.appendChild(iframe)
+            })
+          }
+
+          console.log("[HopLink] IDs extraídos:", {
+            aff_sub1: utm_source,
+            aff_sub2: utm_campaign,
+            aff_sub3: utm_medium,
+            aff_sub4: utm_content,
+            aff_sub5: vturbCk || utm_term,
+          })
+          console.log("[HopLink] URL:", hopUrl)
+        }
+        var player = document.querySelector("vturb-smartplayer")
+
+        player.addEventListener("player:ready", async function () {
+          try {
+            var url = await player.urlUpdater("https://placeholder.com")
+            var parsedUrl = new URL(url)
+            var paramns = player.config.conversion
+            var vturbCk = ""
+            paramns.forEach((param) => {
+              var value = parsedUrl.searchParams.get(param)
+              if (value) {
+                vturbCk = value
+              }
+            })
+            buildAndFireHopLink(vturbCk)
+          } catch (e) {
+            console.warn("[HopLink] Erro ao obter urlUpdater:", e)
+            buildAndFireHopLink("")
+          }
+        })
+      })()
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    <meta
+      name="description"
+      content="Join over 50,000 students who transformed their lives with our complete 90-day wellness training program. Guaranteed results or your money back."
+    />
+    <meta property="og:title" content="News" />
+    <meta
+      property="og:description"
+      content="Join over 50,000 students who transformed their lives with our complete 90-day wellness training program."
+    />
+    <meta
+      property="og:image"
+      content="https://bolt.new/static/og_default.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="News" />
+    <meta
+      name="twitter:description"
+      content="Join over 50,000 students who transformed their lives with our complete 90-day wellness training program."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bolt.new/static/og_default.png"
+    />
+    <meta name="company-name" content="POLACO E COELHO COLECOES LTDA" />
+    <meta name="company-phone" content="(67) 8468-5331" />
+    <meta name="company-email" content="POLACOECOELHO@GMAIL.COM" />
+    <meta
+      name="company-address"
+      content="AV CORONEL FRANCISCO H. DOS SANTOS, 1356, JARDIM DAS AMERICAS, CURITIBA - PR, CEP: 81.530-001"
+    />
+    <meta name="company-number" content="CNPJ: 48.311.576/0001-04" />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --zpd-cx: #000;
+        --mwb-qt: #fff;
+        --rjk-vf: #999;
+        --xnc-dh: #222;
+        --fbp-gk: #111;
+        --qzv-tn: #0a0a0a;
+        --hwj-lp: #fff;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--zpd-cx);
+        color: var(--mwb-qt);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ttq-5ln {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        background: var(--zpd-cx);
+      }
+
+      .ttq-5ln vturb-smartplayer,
+      .ttq-5ln iframe,
+      .ttq-5ln video {
+        max-width: 1400px;
+        width: 100%;
+      }
+
+      .vrt-a50 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 28px 16px 34px;
+        background: var(--qzv-tn);
+      }
+
+      .vrt-a50 .s4r-0b1 {
+        width: min(920px, 100%);
+        text-align: center;
+      }
+      .vrt-a50 .s4r-0b1 h3 {
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+      .vrt-a50 .s4r-0b1 h3 span {
+        color: var(--hwj-lp);
+      }
+      .vrt-a50 .s4r-0b1 p {
+        color: var(--rjk-vf);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .vrt-a50 .slg-pde {
+        width: min(920px, 100%);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .vrt-a50 .slg-pde a {
+        display: block;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--fbp-gk);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .vrt-a50 .slg-pde a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 38px rgba(0, 0, 0, 0.4);
+      }
+      .vrt-a50 .slg-pde img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      @media (max-width: 900px) {
+        .vrt-a50 .slg-pde {
+          grid-template-columns: minmax(0, 1fr);
+          justify-items: center;
+        }
+        .vrt-a50 .slg-pde a {
+          width: min(420px, 100%);
+        }
+      }
+
+      @media (min-width: 901px) {
+        .vrt-a50 .slg-pde,
+        .vrt-a50 .s4r-0b1 {
+          margin: auto;
+        }
+        .vrt-a50 .slg-pde {
+          width: min(1280px, 100%);
+          gap: 22px;
+        }
+        .vrt-a50 .slg-pde a {
+          background: transparent;
+          box-shadow: none;
+        }
+        .vrt-a50 .slg-pde a:nth-child(2),
+        .vrt-a50 .slg-pde a:nth-child(3) {
+          align-self: center;
+          margin-top: 18px;
+        }
+        .vrt-a50 .slg-pde a:nth-child(1) {
+          order: 2;
+        }
+        .vrt-a50 .slg-pde a:nth-child(2) {
+          order: 1;
+        }
+        .vrt-a50 .slg-pde a:nth-child(3) {
+          order: 3;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .vrt-a50 {
+          padding: 22px 12px 28px;
+        }
+        .vrt-a50 .s4r-0b1 h3 {
+          font-size: 18px;
+        }
+        .vrt-a50 .slg-pde {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 14px;
+        }
+      }
+
+      .rte-2ic {
+        margin-top: auto;
+        border-top: 1px solid var(--xnc-dh);
+        padding: 40px 20px 30px;
+        text-align: center;
+      }
+      .rte-2ic .g43-lju {
+        margin-bottom: 20px;
+        font-size: 13px;
+        color: var(--rjk-vf);
+        line-height: 1.8;
+      }
+      .rte-2ic .g43-lju strong {
+        color: var(--mwb-qt);
+      }
+      .rte-2ic .ldy-ken {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .rte-2ic .ldy-ken a {
+        color: var(--rjk-vf);
+        text-decoration: underline;
+        font-size: 13px;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .rte-2ic .ldy-ken a:hover {
+        color: var(--mwb-qt);
+      }
+      .rte-2ic .pwy-9st {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 11px;
+        color: #555;
+        line-height: 1.7;
+      }
+      .rte-2ic .pwy-9st strong {
+        color: #777;
+      }
+
+      .xab-j2u {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .xab-j2u.nlp-mh1 {
+        display: flex;
+        opacity: 1;
+      }
+      .xab-j2u .gaj-q1a {
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 12px;
+        max-width: 700px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 36px 32px;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+      }
+      .xab-j2u.nlp-mh1 .gaj-q1a {
+        transform: translateY(0);
+      }
+      .xab-j2u .gaj-q1a .xov-7k7 {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        background: none;
+        border: none;
+        color: var(--rjk-vf);
+        font-size: 26px;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 10;
+      }
+      .xab-j2u .gaj-q1a .xov-7k7:hover {
+        color: var(--mwb-qt);
+      }
+      .xab-j2u .gaj-q1a h2 {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+      .xab-j2u .gaj-q1a .bog-23q {
+        font-size: 12px;
+        color: var(--rjk-vf);
+        margin-bottom: 20px;
+      }
+      .xab-j2u .gaj-q1a h3 {
+        font-size: 15px;
+        margin: 18px 0 8px;
+      }
+      .xab-j2u .gaj-q1a p,
+      .xab-j2u .gaj-q1a li {
+        font-size: 13px;
+        color: #ccc;
+        line-height: 1.7;
+      }
+      .xab-j2u .gaj-q1a ul {
+        padding-left: 20px;
+        margin: 6px 0;
+      }
+
+      .lya-u6h {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .a9c-j37 {
+        margin-bottom: 0.25rem;
+      }
+      .dc6-7be {
+        margin-bottom: 0.5rem;
+      }
+      .df5-ycd {
+        margin-bottom: 1.5rem;
+      }
+      .y9z-dhn {
+        margin-bottom: 2rem;
+      }
+      .k0s-87t {
+        display: flex;
+      }
+      .txe-bp2 {
+        max-width: 64rem;
+      }
+      .yxv-y2i {
+        max-width: 72rem;
+      }
+      .ben-cxx {
+        justify-content: center;
+      }
+      .p1w-6w6 {
+        gap: 1.5rem;
+      }
+      .n71-z5c > :not([hidden]) ~ :not([hidden]) {
+        --tw-space-y-reverse: 0;
+        margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+        margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+      }
+      .kgf-mgn {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .zd0-d0o {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .nkg-rbc {
+        text-align: center;
+      }
+      .zlc-4nf {
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+      .x3b-hts {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      .ah2-sjw {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+      .cz8-act {
+        font-weight: 700;
+      }
+      .yra-hol {
+        font-weight: 600;
+      }
+      .sa5-zzt {
+        color: rgb(209 213 219);
+      }
+      .au2-9pn {
+        color: rgb(156 163 175);
+      }
+      .i1u-ics {
+        color: rgb(107 114 128);
+      }
+      .q9b-uom {
+        color: #fff;
+      }
+      .d9i-t65 {
+        text-decoration-line: underline;
+      }
+      .d0o-zss {
+        transition-property:
+          color, background-color, border-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 0.15s;
+      }
+      .qls-isy:hover {
+        color: #fff;
+      }
+      footer button {
+        background: transparent;
+        border: none;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+      }
+
+      #m4x-over {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 50;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      #m4x-over.irx-74z {
+        display: flex;
+      }
+      #b9r-wrap {
+        background: #fff;
+        border-radius: 1rem;
+        max-width: 42rem;
+        width: 100%;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      }
+      #h2k-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        flex-shrink: 0;
+      }
+      #t5p-titl {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: rgb(30 41 59);
+        margin: 0;
+      }
+      #c7n-shut {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: rgb(107 114 128);
+        font-size: 1.5rem;
+        line-height: 1;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+      }
+      #c7n-shut:hover {
+        color: rgb(30 41 59);
+        background: rgb(243 244 246);
+      }
+      #d3w-body {
+        overflow-y: auto;
+        padding: 1.5rem;
+        color: rgb(71 85 105);
+        font-size: 0.875rem;
+        line-height: 1.7;
+      }
+      #d3w-body h2 {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: rgb(30 41 59);
+        margin: 1.25rem 0 0.4rem;
+      }
+      #d3w-body h2:first-child {
+        margin-top: 0;
+      }
+      #d3w-body p {
+        margin-bottom: 0.75rem;
+      }
+      #d3w-body ul {
+        list-style: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      #d3w-body ul li {
+        margin-bottom: 0.25rem;
+      }
+      #d3w-body .vdj-vyl {
+        font-size: 0.75rem;
+        color: rgb(156 163 175);
+        margin-bottom: 1.25rem;
+      }
+      #d3w-body .zzo-rup {
+        margin-bottom: 1rem;
+      }
+      #d3w-body .hfw-su0 {
+        font-weight: 700;
+        color: rgb(30 41 59);
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.2rem;
+      }
+
+      .esconder {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="ttq-5ln">
+      <vturb-smartplayer id="vid-6a3b0f3262e50edbe71a6540" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/44b62239-d730-47b6-ae87-62548241599d/players/6a3b0f3262e50edbe71a6540/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+    </section>
+
+    <div class="vrt-a50 esconder">
+      <section class="s4r-0b1">
+        <h3>
+          Enjoy <span style="color: yellow">FREE SHIPPING</span><br />
+          on 3 and 6-Bottle Orders!
+        </h3>
+        <hr style="margin: 10px 0" />
+        <p style="font-size: 1.05rem; color: white">
+          *For long-term results, we strongly recommend the
+          <b>6 bottle option</b> -- our best value!
+        </p>
+      </section>
+      <article style="padding: 15px 10px 0 10px" class="slg-pde">
+        <a
+          class="smartplayer-click-event"
+          href="https://gluco360.pay.clickbank.net/?cbitems=GLU-EN-6BOTTLES&template=glucoli6&cbfid=62503&param=vsl&affiliate=geniushu"
+        >
+          <img src="card-6b-gluco360.webp" alt="" />
+        </a>
+        <a
+          class="smartplayer-click-event"
+          href="https://gluco360.pay.clickbank.net/?cbitems=GLU-EN-3BOTTLES&template=glucoli3&cbfid=62503&param=vsl&affiliate=geniushu"
+        >
+          <img src="card-3b-gluco360.webp" alt="" />
+        </a>
+        <a
+          class="smartplayer-click-event"
+          href="https://gluco360.pay.clickbank.net/?cbitems=GLU-EN-2BOTTLES&template=glucoli2&cbfid=62503&param=vsl&affiliate=geniushu"
+        >
+          <img src="card-2b-gluco360.webp" alt="" />
+        </a>
+      </article>
+    </div>
+
+    <footer
+      class="q9b-uom zd0-d0o"
+      style="background: #000; border-top: 1px solid #222"
+    >
+      <div class="yxv-y2i lya-u6h kgf-mgn">
+        <div class="nkg-rbc df5-ycd">
+          <h3 class="ah2-sjw yra-hol dc6-7be">
+            POLACO E COELHO COLECOES LTDA
+          </h3>
+          <p class="x3b-hts sa5-zzt a9c-j37">
+            AV CORONEL FRANCISCO H. DOS SANTOS, 1356, JARDIM DAS AMERICAS, CURITIBA - PR, CEP: 81.530-001
+          </p>
+          <p class="x3b-hts sa5-zzt">
+            <span class="yra-hol">Email:</span>
+            POLACOECOELHO@GMAIL.COM |
+            <span class="yra-hol">Phone:</span> (67) 8468-5331
+          </p>
+        </div>
+        <div class="k0s-87t ben-cxx p1w-6w6 y9z-dhn x3b-hts">
+          <button
+            class="sa5-zzt qls-isy d9i-t65 d0o-zss"
+            onclick="openModal('privacy')"
+          >
+            Privacy Policy
+          </button>
+          <span class="i1u-ics">|</span>
+          <button
+            class="sa5-zzt qls-isy d9i-t65 d0o-zss"
+            onclick="openModal('terms')"
+          >
+            Terms of Use
+          </button>
+          <span class="i1u-ics">|</span>
+          <button
+            class="sa5-zzt qls-isy d9i-t65 d0o-zss"
+            onclick="openModal('contact')"
+          >
+            Contact
+          </button>
+        </div>
+        <div class="zlc-4nf au2-9pn nkg-rbc n71-z5c txe-bp2 lya-u6h">
+          <p>
+            &copy; 2026 POLACO E COELHO COLECOES LTDA. All rights reserved.
+            No portion of this website — including text, images, or other
+            materials — may be copied, republished, or distributed in any form
+            without prior written authorization.
+          </p>
+          <p>
+            This website operates independently and has no affiliation with,
+            sponsorship from, or connection to Google&#8482;, YouTube&#8482;, or
+            their parent companies. All brand names and trademarks referenced
+            herein belong to their respective holders.
+          </p>
+          <p>
+            The content on this website has not been reviewed or approved by any
+            governmental health authority, including the FDA or EFSA. It is
+            presented for general informational purposes only and should not be
+            taken as medical guidance or professional health advice. Nothing
+            here is intended to diagnose, treat, prevent, or cure any health
+            condition. Always speak with a licensed healthcare provider before
+            making changes to your diet, supplementation, or wellness routine —
+            especially if you are pregnant, breastfeeding, on medication, or
+            managing a health condition.
+          </p>
+          <p>
+            Results depicted or described on this site are not guaranteed and
+            will differ from person to person. Factors such as lifestyle,
+            genetics, physical activity, and overall health all influence
+            outcomes. Nothing presented here should be interpreted as a promise
+            of specific results. Where applicable, identifying information has
+            been altered to safeguard personal privacy.
+          </p>
+          <p>
+            In accordance with FTC guidelines on endorsements (16 CFR Part 255):
+            all testimonials featured on this site represent the honest,
+            unsolicited experiences of real individuals and were shared without
+            any form of compensation or incentive. These accounts reflect
+            personal outcomes only and are not representative of what every user
+            can expect. All information is shared in good faith based on the
+            author's perspective. We strongly encourage independent research and
+            consultation with qualified professionals before making any
+            decisions based on content found here.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="m4x-over" onclick="if (event.target === this) closeModal()">
+      <div id="b9r-wrap">
+        <div id="h2k-head">
+          <h2 id="t5p-titl"></h2>
+          <button id="c7n-shut" onclick="closeModal()" aria-label="Close">
+            &#x2715;
+          </button>
+        </div>
+        <div id="d3w-body"></div>
+      </div>
+    </div>
+    <script>
+      var contents = {
+        privacy: {
+          title: "Privacy Policy",
+          html: '<p class="vdj-vyl">Effective date: March 2024</p><h2>1. Our Commitment</h2><p>At POLACO E COELHO COLECOES LTDA, protecting the personal information of our visitors is a core responsibility. This notice explains what data we may collect, how it is used, and the choices available to you.</p><h2>2. Information We May Gather</h2><p>When you browse or interact with our website, we may collect the following categories of information:</p><ul><li><strong>Identity details:</strong> full name or username</li><li><strong>Communication details:</strong> email address, phone number, mailing address</li><li><strong>Payment details:</strong> credit or debit card information processed securely</li><li><strong>Order history:</strong> records of transactions completed through our platform</li><li><strong>Device information:</strong> browser version, IP address, operating system, language settings</li><li><strong>Usage patterns:</strong> pages visited, time spent, clicks and interactions</li><li><strong>Communication preferences:</strong> whether you opted in or out of marketing messages</li></ul><h2>3. Why We Use Your Data</h2><p>Your information is processed only when there is a valid legal basis to do so. Typical reasons include:</p><ul><li>Processing and fulfilling your orders or reservations</li><li>Providing customer support and account management</li><li>Communicating updates related to your purchases</li><li>Improving the quality and functionality of our services</li><li>Sending marketing communications you have agreed to receive</li><li>Identifying and preventing fraudulent or abusive behavior</li></ul><h2>4. How We Protect Your Information</h2><p>We apply appropriate technical and administrative measures to guard your data against unauthorized access, alteration, or loss. Only those with a genuine need to handle your data — whether employees or contracted service providers — are permitted to do so.</p><h2>5. Retention Period</h2><p>We store personal data for as long as required to fulfill the purposes outlined here, or as mandated by applicable legislation, including tax and financial record-keeping rules. Once no longer necessary, data is securely deleted or anonymized.</p><h2>6. Rights Available to You</h2><p>Depending on your location and applicable law, you may be entitled to:</p><ul><li>Request a copy of your personal data</li><li>Ask us to update or correct your information</li><li>Request that we erase your data under certain conditions</li><li>Restrict or object to specific ways we process your data</li><li>Receive your data in a portable format</li><li>Revoke previously given consent at any time</li></ul><h2>7. Cookie Usage</h2><p>Our website may place small text files (cookies) on your device to support basic functionality and improve your browsing experience. You may adjust cookie preferences in your browser settings, though some features may be affected.</p><h2>8. Links to Other Websites</h2><p>This site may include links pointing to external platforms we do not operate. We are not accountable for the privacy practices of those third parties and recommend reviewing their own policies.</p><h2>9. Changes to This Notice</h2><p>This privacy notice may be updated from time to time. Any revisions will appear on this page along with a new effective date. Continuing to use our services after an update signals your acceptance of the revised terms.</p><h2>10. Getting in Touch</h2><p>If you have questions or requests related to this privacy notice, please contact us through the details listed on our website.</p>',
+        },
+        terms: {
+          title: "Terms of Use",
+          html: '<p class="vdj-vyl">Effective date: March 2024</p><h2>1. Agreement to These Terms</h2><p>By visiting or using this website, you acknowledge that you have read these Terms of Use in full and agree to comply with them. If you disagree with any part, please discontinue use of our services immediately.</p><h2>2. Permitted Use</h2><p>We grant visitors a limited, personal, non-transferable right to access and browse the content on this website for non-commercial purposes only. This right does not permit you to:</p><ul><li>Copy, modify, or redistribute our content</li><li>Use materials for advertising or commercial gain</li><li>Reverse engineer or tamper with any software or system on the site</li><li>Strip or alter copyright and ownership notices</li><li>Host or republish our content on any other platform</li></ul><h2>3. Access to Services</h2><p>Upon completing a purchase, you will be granted access to the relevant digital content or service. Access credentials will be sent to the email address provided at checkout. You are solely responsible for maintaining the security of your login details.</p><h2>4. Satisfaction Guarantee</h2><p>We stand behind our offerings with a 30-day money-back guarantee. Should you be unsatisfied for any reason within that period, contact our support team with your order details and we will process a full refund.</p><h2>5. Your Account</h2><p>When creating an account, you agree to provide accurate, current, and complete information. You are entirely responsible for any activity that occurs under your credentials and must notify us immediately of any unauthorized use.</p><h2>6. Ownership of Content</h2><p>All text, images, videos, and other materials published on this website are the exclusive property of POLACO E COELHO COLECOES LTDA, protected by intellectual property laws. Content is provided for personal viewing only and may not be reproduced or distributed without written permission.</p><h2>7. Unacceptable Use</h2><p>You must not use this website in any way that:</p><ul><li>Breaks or encourages the breaking of any law or regulation</li><li>Infringes on the rights of third parties</li><li>Involves deceptive, misleading, or harmful conduct</li><li>Introduces viruses, malware, or other disruptive code</li><li>Interferes with the normal operation of the platform</li></ul><h2>8. Disclaimer of Warranties</h2><p>All content is made available on a strictly "as available" basis. We make no representations or warranties of any kind — express or implied — regarding accuracy, reliability, or fitness for any particular use.</p><h2>9. Liability Cap</h2><p>To the fullest extent permitted by law, POLACO E COELHO COLECOES LTDA will not be held responsible for any indirect, incidental, special, or consequential loss arising from your use of — or inability to use — this website or its content.</p><h2>10. Applicable Law</h2><p>These Terms are subject to the laws of the territory in which POLACO E COELHO COLECOES LTDA is registered and operates, without regard to conflict-of-law provisions.</p><h2>11. Contact Us</h2><p>For any questions about these Terms, reach out to us through the contact information available on this website.</p>',
+        },
+        contact: {
+          title: "Contact",
+          html: '<p>We welcome your questions and feedback. Get in touch with us through any of the options below — our team will respond as promptly as possible.</p><div class="zzo-rup"><div class="hfw-su0">Business Name</div><p>POLACO E COELHO COLECOES LTDA</p></div><div class="zzo-rup"><div class="hfw-su0">E-mail</div><p><a href="mailto:POLACOECOELHO@GMAIL.COM" style="color:rgb(29 78 216)">POLACOECOELHO@GMAIL.COM</a></p></div><div class="zzo-rup"><div class="hfw-su0">Phone</div><p>(67) 8468-5331</p></div><div class="zzo-rup"><div class="hfw-su0">Location</div><p>AV CORONEL FRANCISCO H. DOS SANTOS, 1356, JARDIM DAS AMERICAS, CURITIBA - PR, CEP: 81.530-001</p></div><div class="zzo-rup"><div class="hfw-su0">Tax ID</div><p>CNPJ: 48.311.576/0001-04</p></div>',
+        },
+      }
+
+      function openModal(key) {
+        var c = contents[key]
+        document.getElementById("t5p-titl").textContent = c.title
+        document.getElementById("d3w-body").innerHTML = c.html
+        document.getElementById("d3w-body").scrollTop = 0
+        document.getElementById("m4x-over").classList.add("irx-74z")
+        document.body.style.overflow = "hidden"
+      }
+
+      function closeModal() {
+        document.getElementById("m4x-over").classList.remove("irx-74z")
+        document.body.style.overflow = ""
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeModal()
+      })
+    </script>
+
+    <script>
+      const tempoPitch = "01:03:46"
+
+      const tempoPitchSegundos = tempoPitch
+        .split(":")
+        .map(Number)
+        .reduce((acc, val) => acc * 60 + val, 0)
+
+      var delaySeconds = tempoPitchSegundos
+      var player = document.querySelector("vturb-smartplayer")
+
+      player.addEventListener("player:ready", function () {
+        player.displayHiddenElements(delaySeconds, [".esconder"], {
+          persist: true,
+        })
+      })
+    </script>
+  </body>
+</html>

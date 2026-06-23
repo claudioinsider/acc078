@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      function getQueryParams() {
+        return new URLSearchParams(window.location.search)
+      }
+
+
+      function combineParams(originalHref, currentParams) {
+        let [baseUrl, originalParamsString] = originalHref.split("?")
+        let originalParams = new URLSearchParams(originalParamsString || "")
+        currentParams.forEach((value, key) => {
+          if (!originalParams.has(key)) {
+            originalParams.append(key, value)
+          }
+        })
+        let finalParamsString = originalParams.toString()
+        return finalParamsString ? `${baseUrl}?${finalParamsString}` : baseUrl
+      }
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let buttons = document.querySelectorAll("a")
+        let currentParams = getQueryParams()
+        buttons.forEach(function (button) {
+          let originalHref = button.getAttribute("href")
+          button.setAttribute(
+            "href",
+            combineParams(originalHref, currentParams),
+          )
+        })
+      })
+    </script>
+
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-is-click-bank
+      async
+      defer
+    ></script>
+
+    <script>
+      window.googlePixelId = "6a3b07fd464d22c2f476baed";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-google.js");
+      document.head.appendChild(a);
+    </script>
+
+    <script>
+      ;(function () {
+        function getParam(name) {
+          try {
+            return new URL(window.location.href).searchParams.get(name) || ""
+          } catch (e) {
+            return ""
+          }
+        }
+
+        function extractId(value) {
+          if (!value) return ""
+          var parts = value.split("|")
+          return parts.length > 1 ? parts[parts.length - 1] : parts[0]
+        }
+        var utm_source = extractId(getParam("utm_source"))
+        var utm_campaign = extractId(getParam("utm_campaign"))
+        var utm_medium = extractId(getParam("utm_medium"))
+        var utm_content = extractId(getParam("utm_content"))
+        var utm_term = extractId(getParam("utm_term"))
+        if (
+          !utm_source &&
+          !utm_campaign &&
+          !utm_medium &&
+          !utm_content &&
+          !utm_term
+        ) {
+          return
+        }
+        var hopBase = "https://bb94c7fhof448l5annqgc3as3w.hop.clickbank.net"
+        var params = [
+          "aff_sub1=" + encodeURIComponent(utm_source),
+          "aff_sub2=" + encodeURIComponent(utm_campaign),
+          "aff_sub3=" + encodeURIComponent(utm_medium),
+          "aff_sub4=" + encodeURIComponent(utm_content),
+          "aff_sub5=" + encodeURIComponent(utm_term),
+          "unique_aff_sub1=" + encodeURIComponent(utm_source),
+          "unique_aff_sub2=" + encodeURIComponent(utm_campaign),
+          "unique_aff_sub3=" + encodeURIComponent(utm_medium),
+          "unique_aff_sub4=" + encodeURIComponent(utm_content),
+          "unique_aff_sub5=" + encodeURIComponent(utm_term),
+        ]
+        var hopUrl = hopBase + "?" + params.join("&")
+        var iframe = document.createElement("iframe")
+        iframe.src = hopUrl
+        iframe.width = "0"
+        iframe.height = "0"
+        iframe.style.cssText =
+          "display:none;width:0;height:0;border:0;position:absolute;left:-9999px;"
+        iframe.setAttribute("tabindex", "-1")
+        iframe.setAttribute("aria-hidden", "true")
+        iframe.setAttribute("title", "")
+        if (document.body) {
+          document.body.appendChild(iframe)
+        } else {
+          document.addEventListener("DOMContentLoaded", function () {
+            document.body.appendChild(iframe)
+          })
+        }
+        console.log("[HopLink] IDs extraídos:", {
+          aff_sub1: utm_source,
+          aff_sub2: utm_campaign,
+          aff_sub3: utm_medium,
+          aff_sub4: utm_content,
+          aff_sub5: utm_term,
+        })
+        console.log("[HopLink] URL:", hopUrl)
+      })()
+    </script>
+
+    <script>
+      ;(function () {
+        var hopBase = "https://bb94c7fhof448l5annqgc3as3w.hop.clickbank.net"
+
+        function getParam(name) {
+          try {
+            return new URL(window.location.href).searchParams.get(name) || ""
+          } catch (e) {
+            return ""
+          }
+        }
+
+        function extractId(value) {
+          if (!value) return ""
+          var parts = value.split("|")
+          return parts.length > 1 ? parts[parts.length - 1] : parts[0]
+        }
+
+        function buildAndFireHopLink(vturbCk) {
+          var utm_source = extractId(getParam("utm_source"))
+          var utm_campaign = extractId(getParam("utm_campaign"))
+          var utm_medium = extractId(getParam("utm_medium"))
+          var utm_content = extractId(getParam("utm_content"))
+          var utm_term = extractId(getParam("utm_term"))
+
+          var hopUrlObj = new URL(hopBase)
+
+          // Copia todos os parâmetros da URL atual para a hop URL
+          try {
+            var currentParams = new URL(window.location.href).searchParams
+            currentParams.forEach(function (value, key) {
+              if (!hopUrlObj.searchParams.has(key)) {
+                hopUrlObj.searchParams.set(key, value)
+              }
+            })
+          } catch (e) {}
+
+          // Adiciona aff_sub e unique_aff_sub apenas se não existirem
+          var affSubs = {
+            aff_sub1: utm_source || vturbCk || "",
+            aff_sub2: utm_campaign || vturbCk || "",
+            aff_sub3: utm_medium || vturbCk || "",
+            aff_sub4: utm_content || vturbCk || "",
+            aff_sub5: vturbCk || utm_term || "",
+            unique_aff_sub1: utm_source || vturbCk || "",
+            unique_aff_sub2: utm_campaign || vturbCk || "",
+            unique_aff_sub3: utm_medium || vturbCk || "",
+            unique_aff_sub4: utm_content || vturbCk || "",
+            unique_aff_sub5: vturbCk || utm_term || "",
+          }
+
+          for (var key in affSubs) {
+            if (!hopUrlObj.searchParams.has(key)) {
+              hopUrlObj.searchParams.set(key, affSubs[key])
+            }
+          }
+
+          var hopUrl = hopUrlObj.toString()
+
+          var iframe = document.createElement("iframe")
+          iframe.src = hopUrl
+          iframe.width = "0"
+          iframe.height = "0"
+          iframe.style.cssText =
+            "display:none;width:0;height:0;border:0;position:absolute;left:-9999px;"
+          iframe.setAttribute("tabindex", "-1")
+          iframe.setAttribute("aria-hidden", "true")
+          iframe.setAttribute("title", "")
+
+          if (document.body) {
+            document.body.appendChild(iframe)
+          } else {
+            document.addEventListener("DOMContentLoaded", function () {
+              document.body.appendChild(iframe)
+            })
+          }
+
+          console.log("[HopLink] IDs extraídos:", {
+            aff_sub1: utm_source,
+            aff_sub2: utm_campaign,
+            aff_sub3: utm_medium,
+            aff_sub4: utm_content,
+            aff_sub5: vturbCk || utm_term,
+          })
+          console.log("[HopLink] URL:", hopUrl)
+        }
+        var player = document.querySelector("vturb-smartplayer")
+
+        player.addEventListener("player:ready", async function () {
+          try {
+            var url = await player.urlUpdater("https://placeholder.com")
+            var parsedUrl = new URL(url)
+            var paramns = player.config.conversion
+            var vturbCk = ""
+            paramns.forEach((param) => {
+              var value = parsedUrl.searchParams.get(param)
+              if (value) {
+                vturbCk = value
+              }
+            })
+            buildAndFireHopLink(vturbCk)
+          } catch (e) {
+            console.warn("[HopLink] Erro ao obter urlUpdater:", e)
+            buildAndFireHopLink("")
+          }
+        })
+      })()
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse Ritual - Special Report</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background: #fff;
+      }
+
+      /* ── MAIN CONTENT ── */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px 16px;
+        gap: 18px;
+      }
+
+      h1 {
+        font-size: 2.7rem;
+        font-weight: 900;
+        color: #cc0000;
+        text-align: center;
+        line-height: 1.25;
+        max-width: 1000px;
+      }
+
+      /* ── VIDEO THUMBNAIL ── */
+      .mzk-hp0 {
+        position: relative;
+        width: 100%;
+        max-width: 780px;
+        cursor: pointer;
+      }
+
+      .mzk-hp0 img.wuw-b1n {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+      }
+
+      .gbu-0xm {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .gbu-0xm svg {
+        width: 30px;
+        height: 30px;
+        fill: #333;
+        margin-left: 4px;
+      }
+
+      /* ── CTA ── */
+      .usg-9gk {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #cc0000;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .iz9-ad6 {
+        display: inline-block;
+        background: #cc0000;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 18px 52px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .iz9-ad6:hover {
+        background: #aa0000;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #fff;
+        border-top: 1px solid #e0e0e0;
+        padding: 24px 16px 20px;
+        text-align: center;
+      }
+
+      .z9x-75f {
+        font-size: 0.9rem;
+        color: #333;
+        line-height: 1.7;
+      }
+
+      .qtz-inn {
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
+
+      .qtz-inn a {
+        color: #333;
+        text-decoration: underline;
+      }
+
+      .qtz-inn a:hover {
+        color: #000;
+      }
+
+      .tdb-r5y {
+        margin-top: 12px;
+        font-size: 0.72rem;
+        color: #666;
+        line-height: 1.6;
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 600px) {
+        main {
+          gap: 12px;
+          padding: 2rem 12px 2rem;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+          padding: 1rem 0 2rem 0;
+        }
+
+        .gbu-0xm {
+          width: 60px;
+          height: 60px;
+        }
+
+        .gbu-0xm svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .usg-9gk {
+          font-size: 0.8rem;
+          padding: 1rem 0;
+        }
+
+        .iz9-ad6 {
+          font-size: 1.2rem;
+          padding: 14px 28px;
+          width: 90%;
+          text-align: center;
+        }
+
+        .tdb-r5y {
+          font-size: 0.65rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>
+        Experts confirm: Old methods don't work<br />discover the new Reverse
+        Ritual now
+      </h1>
+
+      <a href="video" class="mzk-hp0">
+        <img class="wuw-b1n" src="image.webp" alt="Reverse Ritual ingredients" />
+        <div class="gbu-0xm">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" /></svg>
+        </div>
+      </a>
+
+      <p class="usg-9gk">Watch the Special Report</p>
+
+      <a href="video" class="iz9-ad6">Click the Button</a>
+    </main>
+
+    <footer>
+      <div class="z9x-75f">
+        Copyright 2026 - POLACO E COELHO COLECOES LTDA<br />
+        All rights reserved
+      </div>
+      <div class="qtz-inn">
+        <a>Terms of use</a> &nbsp;·&nbsp; <a>Privacy</a>
+      </div>
+      <p class="tdb-r5y">
+        This site is not a part of Google™ website or network of sites such as
+        Youtube™ or any company owned by Google™ or Youtube™. Additionally, this
+        website is not endorsed by Google™ Youtube™ Inc. in any way. Google™ is
+        a trademark for all their respective companies. FDA Compliance The
+        information on this website has not been evaluated by the Food &amp;
+        Drug Administration or any other medical body. We do not aim to
+        diagnose, treat, cure or prevent any illness or disease. Information is
+        shared for educational purposes only. You should always consult your
+        doctor before acting on any content on this website, especially if you
+        are pregnant, nursing, taking medication or have a medical condition.
+        Marketing Disclosure: This website is a marketplace. As such, you should
+        know that the owner has a monetary connection to the product and
+        services advertised on the site. The owner receives payment whenever a
+        qualified lead is referred but that is the extent of it. Advertising
+        Disclosure: This website and the products &amp; services referred to on
+        the site are advertising marketplaces. This website is an advertisement
+        and not a news publication. Any photographs of persons used on this site
+        are models. The owner of this site and the products and services
+        referred to on this site only provides a service where consumers can
+        obtain and compare. Please Read Our Testimonial Disclaimer Here Some
+        names and personal identifying information on this site have been
+        changed to protect the privacy of individuals. No individual result
+        should be seen as typical.
+      </p>
+    </footer>
+  </body>
+</html>
